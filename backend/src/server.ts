@@ -2,6 +2,7 @@ import app from "./app";
 import connectToDB from "./config/db";
 const PORT = process.env.PORT || 3000;
 
+//server
 (async () => {
   try {
     await connectToDB();
