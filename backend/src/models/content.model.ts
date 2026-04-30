@@ -13,7 +13,7 @@ const contentSchema = new Schema<IContent>({
   link: { type: String, required: true },
   type: {
     type: String,
-    enum: ["article", "video", "image", "audio"],
+    enum: ["document", "video", "image", "link"],
     required: true,
   },
   userId: { type: Types.ObjectId, ref: "user", required: true },
