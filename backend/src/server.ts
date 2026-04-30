@@ -1,18 +1,18 @@
-import "dotenv/config";
 import app from "./app";
-import { connectDB } from "./config/db";
+import mongoose from "mongoose";
 
-const PORT = Number(process.env.PORT) || 5000;
+const PORT = process.env.PORT || 3000;
+const MONGO_URI =
+  process.env.MONGO_URI || "mongodb://localhost:27017/secondbrain";
 
-const startServer = async () => {
-  await connectDB();
-
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+mongoose
+  .connect(MONGO_URI)
+  .then(() => {
+    console.log("Connected to MongoDB");
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.error("Database connection error:", error);
   });
-};
-
-startServer().catch((error) => {
-  console.error("Failed to start server", error);
-  process.exit(1);
-});

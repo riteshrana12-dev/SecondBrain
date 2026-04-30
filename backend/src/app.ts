@@ -1,16 +1,18 @@
-import cors from "cors";
 import express from "express";
-import authRoutes from "./routes/auth.routes";
+import cors from "cors";
+import cookieParser from "cookie-parser";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 
+// Middleware
 app.use(cors());
+app.use(cookieParser());
 app.use(express.json());
 
-app.get("/health", (_req, res) => {
-  res.status(200).json({ status: "ok" });
-});
-
-app.use("/api/auth", authRoutes);
+// Routes
+// TODO: Add routes here
 
 export default app;
