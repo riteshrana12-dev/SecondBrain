@@ -23,4 +23,23 @@ const getTags = async (req: Request, res: Response) => {
   }
 };
 
-export default { getTags };
+const addTag = async (req: Request, res: Response) => {
+  try {
+    const { tag } = req.body;
+    if (!tag) {
+      await tagModel.create({ tag });
+    }
+
+    return res.status(200).json({
+      success: true,
+      tag,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "server error",
+      error,
+    });
+  }
+};
+
+export default { getTags, addTag };
