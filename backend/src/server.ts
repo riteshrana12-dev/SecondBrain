@@ -1,18 +1,15 @@
 import app from "./app";
-import mongoose from "mongoose";
-
+import connectToDB from "./config/db";
 const PORT = process.env.PORT || 3000;
-const MONGO_URI =
-  process.env.MONGO_URI || "mongodb://localhost:27017/secondbrain";
 
-mongoose
-  .connect(MONGO_URI)
-  .then(() => {
-    console.log("Connected to MongoDB");
+(async () => {
+  try {
+    await connectToDB();
     app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
+      console.log(`Server is running on port ${PORT}`);
     });
-  })
-  .catch((error) => {
-    console.error("Database connection error:", error);
-  });
+  } catch (error) {
+    console.error("Error connecting to the database:", error);
+    process.exitCode = 1;
+  }
+})();
