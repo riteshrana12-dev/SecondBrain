@@ -15,10 +15,10 @@ const getTags = async (req: Request, res: Response) => {
       success: true,
       tags,
     });
-  } catch (error) {
+  } catch (error: any) {
     return res.status(500).json({
-      message: "server error",
-      error,
+      message: "Server error",
+      error: error.message,
     });
   }
 };
@@ -34,10 +34,10 @@ const addTag = async (req: Request, res: Response) => {
       success: true,
       tag,
     });
-  } catch (error) {
+  } catch (error: any) {
     return res.status(500).json({
-      message: "server error",
-      error,
+      message: "Server error",
+      error: error.message,
     });
   }
 };
