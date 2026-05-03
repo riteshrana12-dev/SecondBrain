@@ -10,9 +10,9 @@ interface jwt extends JwtPayload {
 const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
   const Token = req.cookies?.userToken;
   if (!Token) {
-    return res.status(403).json({
+    return res.status(401).json({
       success: false,
-      message: "Incorrect Creddentials",
+      message: "Authentication required",
     });
   }
 
@@ -21,7 +21,7 @@ const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
     req.user_id = decoded.id;
     next();
   } catch (error) {
-    res.status(500).json({
+    res.status(401).json({
       success: false,
       message: "Authentication failed retry",
     });
