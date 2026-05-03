@@ -45,10 +45,10 @@ const signUp = async (req: Request, res: Response) => {
       message: "SignUp successfull",
       user,
     });
-  } catch (error) {
+  } catch (error: any) {
     return res.status(500).json({
-      message: "server error",
-      error,
+      message: "Server error",
+      error: error.message,
     });
   }
 };
@@ -95,10 +95,20 @@ const signIn = async (req: Request, res: Response) => {
       { expiresIn: "7d" },
     );
 
-    res.cookie("userToken", Token);
+    res.cookie("userToken", Token, {
+      httpOnly: true, // JS can't access it — XSS protection
+      secure: process.env.NODE_ENV === "production", // HTTPS only in prod
+      sameSite: "lax", // CSRF protection
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
+    });
 
     return res.status(200).json({ message: "Sign in successfull", Token });
-  } catch (error) {}
+  } catch (error: any) {
+    return res.status(500).json({
+      message: "Server error",
+      error: error.message,
+    });
+  }
 };
 
 const signOut = (req: Request, res: Response) => {
