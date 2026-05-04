@@ -25,6 +25,11 @@ export const useContent = () => {
   };
 
   // ✅ async wrapper to avoid cascading render warning
+  useEffect(() => {
+    (async () => {
+      await fetchContent();
+    })();
+  }, []);
 
   return {
     contents,
