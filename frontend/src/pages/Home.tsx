@@ -12,3 +12,7 @@ const Home = () => {
   const [editContent, setEditContent] = useState<Content | null>(null);
   const [loading, setLoading] = useState(true);
   const [shareLoading, setShareLoading] = useState(false);
+
+
+    const [shareLink, setShareLink] = useState<string | null>(null);
+  const [isChatOpen, setIsChatOpen] = useState(false);
