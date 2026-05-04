@@ -4,6 +4,7 @@ import Card from "../components/ui/Card";
 import Modal from "../components/ui/Modal";
 import SearchBar from "../components/ui/SearchBar";
 import ChatPanel from "../components/ChatPanel";
+import { SkeletonGrid } from "../components/ui/SkeletonCard";
 import PlusIcon from "../icons/PlusIcon";
 import ShareIcon from "../icons/ShareIcon";
 import api from "../api/axios";
@@ -89,6 +90,20 @@ const Home = () => {
     }
   };
 
+  const handleReEmbed = async (id: string) => {
+    try {
+      await api.post(`/content/reembed/${id}`);
+      // optimistically update the card to show embedding started
+      setContents((prev) =>
+        prev.map((c) => (c._id === id ? { ...c, isEmbedded: false } : c)),
+      );
+      // refetch after 5s to get updated isEmbedded status
+      setTimeout(fetchContent, 5000);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div className="flex h-screen bg-gray-100 overflow-hidden">
       <Sidebar activeFilter={activeFilter} onFilterChange={setActiveFilter} />
@@ -99,7 +114,6 @@ const Home = () => {
           <div className="w-full md:max-w-sm pl-10 md:pl-0">
             <SearchBar onSearch={handleSearch} />
           </div>
-
           <div className="flex gap-2 shrink-0">
             <button
               onClick={handleShare}
@@ -115,7 +129,6 @@ const Home = () => {
                     : "Share Brain"}
               </span>
             </button>
-
             <button
               onClick={() => {
                 setEditContent(null);
@@ -132,10 +145,25 @@ const Home = () => {
         {/* content grid */}
         <div className="flex-1 overflow-y-auto p-4 md:p-6 pb-24">
           {loading ? (
-            <p className="text-gray-400 text-sm">Loading...</p>
+            <SkeletonGrid count={6} />
           ) : filtered.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full gap-3">
-              <p className="text-gray-400 text-sm">No content found.</p>
+              <div className="size-16 rounded-full bg-gray-200 flex items-center justify-center">
+                <svg
+                  className="size-8 text-gray-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
+                  />
+                </svg>
+              </div>
+              <p className="text-gray-400 text-sm">No content found</p>
               <button
                 onClick={() => {
                   setEditContent(null);
@@ -154,6 +182,11 @@ const Home = () => {
                   content={content}
                   onDelete={() => handleDelete(content._id)}
                   onEdit={() => handleEdit(content)}
+                  onReEmbed={
+                    content.isEmbedded === false
+                      ? () => handleReEmbed(content._id)
+                      : undefined
+                  }
                 />
               ))}
             </div>
@@ -161,7 +194,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* floating chat button — hides when panel open */}
+      {/* floating chat button */}
       <button
         onClick={() => setIsChatOpen(true)}
         className={`
@@ -187,14 +220,11 @@ const Home = () => {
             d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
           />
         </svg>
-        {/* pulse ring */}
         <span className="absolute inline-flex size-full rounded-full bg-purple-400 opacity-30 animate-ping" />
       </button>
 
-      {/* chat panel */}
       <ChatPanel isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
 
-      {/* modal */}
       <Modal
         key={editContent?._id || "add"}
         isOpen={isModalOpen}
