@@ -16,3 +16,20 @@ const Home = () => {
 
     const [shareLink, setShareLink] = useState<string | null>(null);
   const [isChatOpen, setIsChatOpen] = useState(false);
+
+    const fetchContent = async () => {
+    try {
+      const res = await api.get("/content/get");
+      setContents(res.data.content);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    (async () => {
+      await fetchContent();
+    })();
+  }, []);
