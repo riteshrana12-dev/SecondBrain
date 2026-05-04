@@ -1,18 +1,19 @@
-import { sizeVariants, type IconsProps } from "../types";
+﻿import { sizeVariants } from "../types";
+import type { IconsProps } from "../types";
 
-const PlusIcon = (props: IconsProps) => {
+const PlusIcon = ({ size }: IconsProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
-      stroke-width="2.5"
+      strokeWidth="2.5"
       stroke="currentColor"
-      className={`w-7 h-7 font-bold ${sizeVariants[props.size]}`}
+      className={sizeVariants[size]}
     >
       <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         d="M12 4.5v15m7.5-7.5h-15"
       />
     </svg>
