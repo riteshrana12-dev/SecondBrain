@@ -27,5 +27,24 @@ export const useAuth = () => {
     }
   };
 
-  return { signIn };
+  const signUp = async (username: string, email: string, password: string) => {
+    setLoading(true);
+    setError("");
+    try {
+      await api.post("/auth/signup", { username, email, password });
+      navigate("/signin");
+    } catch (err: unknown) {
+      if (err instanceof AxiosError) {
+        setError(err.response?.data?.message || "Something went wrong");
+      } else if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Unexpected error");
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { signIn, signUp, loading, error };
 };
