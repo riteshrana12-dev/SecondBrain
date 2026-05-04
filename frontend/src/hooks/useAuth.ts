@@ -46,5 +46,14 @@ export const useAuth = () => {
     }
   };
 
-  return { signIn, signUp, loading, error };
+  const signOut = async () => {
+    try {
+      await api.post("/auth/signout");
+      navigate("/signin");
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  return { signIn, signUp, signOut, loading, error };
 };
