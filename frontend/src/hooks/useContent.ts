@@ -45,6 +45,23 @@ export const useContent = () => {
     }
   };
 
+  const deleteContent = async (id: string) => {
+    try {
+      await api.delete(`/content/${id}`);
+      setContents((prev) => prev.filter((c) => c._id !== id));
+      return true;
+    } catch (err: unknown) {
+      if (err instanceof AxiosError) {
+        setError(err.response?.data?.message || "Something went wrong");
+      } else if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Unexpected error");
+      }
+      return false;
+    }
+  };
+
   // ✅ async wrapper to avoid cascading render warning
   useEffect(() => {
     (async () => {
@@ -58,5 +75,6 @@ export const useContent = () => {
     error,
     fetchContent,
     addContent,
+    deleteContent,
   };
 };
