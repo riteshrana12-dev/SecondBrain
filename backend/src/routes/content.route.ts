@@ -13,4 +13,6 @@ contentRouter.post(
 contentRouter.delete("/:id", authMiddleware, contentController.deleteContent);
 contentRouter.get("/get", authMiddleware, contentController.getContent);
 contentRouter.put("/:id", authMiddleware, contentController.updateContent);
+contentRouter.post("/reembed/:id", authMiddleware, contentController.reEmbed);
+
 export default contentRouter;
