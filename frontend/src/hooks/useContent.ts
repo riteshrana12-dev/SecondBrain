@@ -62,6 +62,34 @@ export const useContent = () => {
     }
   };
 
+  const updateContent = async (
+    id: string,
+    data: {
+      title: string;
+      link: string;
+      type: string;
+      notes: string;
+      tags: string[];
+    },
+  ) => {
+    try {
+      const res = await api.put<{ updated: Content }>(`/content/${id}`, data);
+      setContents((prev) =>
+        prev.map((c) => (c._id === id ? res.data.updated : c)),
+      );
+      return true;
+    } catch (err: unknown) {
+      if (err instanceof AxiosError) {
+        setError(err.response?.data?.message || "Something went wrong");
+      } else if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Unexpected error");
+      }
+      return false;
+    }
+  };
+
   // ✅ async wrapper to avoid cascading render warning
   useEffect(() => {
     (async () => {
@@ -76,5 +104,6 @@ export const useContent = () => {
     fetchContent,
     addContent,
     deleteContent,
+    updateContent,
   };
 };
