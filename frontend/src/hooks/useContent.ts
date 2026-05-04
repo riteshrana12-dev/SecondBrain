@@ -90,6 +90,27 @@ export const useContent = () => {
     }
   };
 
+  const searchContent = async (query: string) => {
+    if (!query.trim()) {
+      await fetchContent(); // reset to all content
+      return;
+    }
+    try {
+      const res = await api.get<{ results: Content[] }>(
+        `/search?query=${encodeURIComponent(query)}`,
+      );
+      setContents(res.data.results);
+    } catch (err: unknown) {
+      if (err instanceof AxiosError) {
+        setError(err.response?.data?.message || "Something went wrong");
+      } else if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Unexpected error");
+      }
+    }
+  };
+
   // ✅ async wrapper to avoid cascading render warning
   useEffect(() => {
     (async () => {
@@ -105,5 +126,6 @@ export const useContent = () => {
     addContent,
     deleteContent,
     updateContent,
+    searchContent,
   };
 };
