@@ -3,3 +3,12 @@ import Sidebar from "../components/ui/Sidebar";
 import Card from "../components/ui/Card";
 import Modal from "../components/ui/Modal";
 import SearchBar from "../components/ui/SearchBar";
+
+
+const Home = () => {
+  const [contents, setContents] = useState<Content[]>([]);
+  const [activeFilter, setActiveFilter] = useState("all");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editContent, setEditContent] = useState<Content | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [shareLoading, setShareLoading] = useState(false);
