@@ -3,6 +3,8 @@ import contentModel from "../models/content.model";
 import { resolveTagIds } from "../utils/tags";
 import { processEmbedding } from "../services/embeddingService";
 import { uploadFile } from "../services/fileService";
+import { deleteFile } from "../services/fileService";
+
 const addContent = async (req: Request, res: Response) => {
   try {
     const { title, link, type, tags, notes } = req.body;
@@ -76,7 +78,12 @@ const deleteContent = async (req: Request, res: Response) => {
     if (!deleted) {
       return res
         .status(404)
-        .json({ success: false, message: "Content not found or unauthorized" });
+        .json({ success: false, message: "Content not found" });
+    }
+
+    // delete file from Supabase if it exists
+    if (deleted.fileUrl) {
+      await deleteFile(deleted.fileUrl);
     }
 
     return res.status(200).json({ success: true, message: "Content deleted" });
@@ -119,4 +126,39 @@ const updateContent = async (req: Request, res: Response) => {
   }
 };
 
-export default { addContent, getContent, deleteContent, updateContent };
+const reEmbed = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const userId = req.user_id;
+
+    const content = await contentModel.findOne({ _id: id, userId });
+    if (!content) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Content not found" });
+    }
+
+    res.status(200).json({ success: true, message: "Re-embedding started" });
+
+    // fire and forget
+    processEmbedding(
+      content._id,
+      content.type,
+      content.link || "",
+      content.title,
+      content.notes || "",
+      content.fileUrl || "",
+    );
+  } catch (error: any) {
+    return res
+      .status(500)
+      .json({ message: "server error", error: error.message });
+  }
+};
+export default {
+  addContent,
+  getContent,
+  deleteContent,
+  updateContent,
+  reEmbed,
+};
