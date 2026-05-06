@@ -151,3 +151,34 @@ const Sidebar = ({ activeFilter, onFilterChange }: SidebarProps) => {
           onClick={() => setIsOpen(false)}
         />
       )}
+
+      {/* sidebar */}
+      <div
+        className={`
+          fixed md:static inset-y-0 left-0 z-40
+          w-56 h-screen bg-white border-r border-gray-200
+          flex flex-col shrink-0
+          transform transition-transform duration-200
+          ${isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
+        `}
+      >
+        {/* logo */}
+        <div className="px-4 py-5 border-b border-gray-200">
+          <h1 className="text-xl font-bold text-purple-600">Second Brain</h1>
+          <p className="text-xs text-gray-400 mt-0.5">
+            Your personal knowledge base
+          </p>
+        </div>
+
+        {/* nav items */}
+        <div className="flex-1 overflow-y-auto p-3 flex flex-col gap-1">
+          {items.map((item) => (
+            <SidebarItems
+              key={item.value}
+              icon={item.icon}
+              text={item.text}
+              active={activeFilter === item.value}
+              onClick={() => handleFilterChange(item.value)}
+            />
+          ))}
+        </div>
