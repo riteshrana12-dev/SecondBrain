@@ -217,6 +217,7 @@ const Modal = ({ isOpen, onClose, onSuccess, editContent }: ModalProps) => {
               </p>
             </div>
           )}
+
           {/* notes */}
           <div className="flex flex-col gap-1">
             <label className="text-sm font-medium text-gray-600">Notes</label>
