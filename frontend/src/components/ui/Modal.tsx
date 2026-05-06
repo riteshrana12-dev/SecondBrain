@@ -125,7 +125,7 @@ const Modal = ({ isOpen, onClose, onSuccess, editContent }: ModalProps) => {
             name="title"
             value={form.title}
             onChange={handleChange}
-            placeholder="e.g. React hooks tutorial"
+            placeholder=""
           />
 
           {/* type selector */}
