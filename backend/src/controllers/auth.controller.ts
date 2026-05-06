@@ -87,7 +87,7 @@ const signIn = async (req: Request, res: Response) => {
       });
     }
 
-    const Token = jwt.sign(
+    const token = jwt.sign(
       {
         id: existingUser._id,
       },
@@ -95,14 +95,14 @@ const signIn = async (req: Request, res: Response) => {
       { expiresIn: "7d" },
     );
 
-    res.cookie("userToken", Token, {
+    res.cookie("token", token, {
       httpOnly: true, // JS can't access it — XSS protection
       secure: process.env.NODE_ENV === "production", // HTTPS only in prod
       sameSite: "lax", // CSRF protection
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
     });
 
-    return res.status(200).json({ message: "Sign in successfull", Token });
+    return res.status(200).json({ message: "Sign in successfull", token });
   } catch (error: any) {
     return res.status(500).json({
       message: "Server error",
@@ -112,7 +112,7 @@ const signIn = async (req: Request, res: Response) => {
 };
 
 const signOut = (req: Request, res: Response) => {
-  res.clearCookie("userToken");
+  res.clearCookie("token");
 
   return res.status(200).json({
     success: true,
