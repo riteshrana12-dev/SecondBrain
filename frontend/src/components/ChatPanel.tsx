@@ -194,3 +194,49 @@ const ChatPanel = ({ isOpen, onClose }: ChatPanelProps) => {
                 )}
             </div>
           ))}
+
+          {/* loading dots */}
+          {loading && (
+            <div className="flex items-start">
+              <div className="bg-gray-100 border border-gray-200 px-4 py-3 rounded-2xl rounded-bl-sm">
+                <div className="flex gap-1 items-center h-4">
+                  <span
+                    className="size-2 bg-purple-500 rounded-full animate-bounce"
+                    style={{ animationDelay: "0ms" }}
+                  />
+                  <span
+                    className="size-2 bg-purple-500 rounded-full animate-bounce"
+                    style={{ animationDelay: "150ms" }}
+                  />
+                  <span
+                    className="size-2 bg-purple-500 rounded-full animate-bounce"
+                    style={{ animationDelay: "300ms" }}
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+
+          <div ref={bottomRef} />
+        </div>
+
+        {/* suggested questions — only show when just welcome message */}
+        {messages.length === 1 && (
+          <div className="px-4 pb-2 flex flex-wrap gap-2 shrink-0">
+            {[
+              "Summarize my notes",
+              "What do I know about AI?",
+              "Show my recent saves",
+            ].map((q) => (
+              <button
+                key={q}
+                onClick={() => {
+                  setInput(q);
+                }}
+                className="text-xs px-3 py-1.5 rounded-full border border-purple-300 text-purple-600 bg-purple-300 hover:bg-purple-400 transition-colors"
+              >
+                {q}
+              </button>
+            ))}
+          </div>
+        )}
