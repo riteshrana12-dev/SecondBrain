@@ -34,3 +34,25 @@ function Card({
           </span>
         </div>
       </div>
+
+      {/* youtube embed */}
+      {content.type === "youtube" && content.link && (
+        <iframe
+          className="w-full h-48 rounded-lg"
+          src={`https://www.youtube.com/embed/${extractYouTubeId(content.link)}`}
+          title={content.title || "YouTube video"}
+          allowFullScreen
+        />
+      )}
+
+      {/* tweet */}
+      {content.type === "tweet" && content.link && (
+        <a
+          href={content.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-purple-600 text-sm underline underline-offset-2 hover:text-purple-500"
+        >
+          View Tweet
+        </a>
+      )}
