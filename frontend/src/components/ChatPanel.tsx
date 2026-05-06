@@ -142,4 +142,55 @@ const ChatPanel = ({ isOpen, onClose }: ChatPanelProps) => {
           </button>
         </div>
 
-        
+        {/* messages */}
+        <div className="flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-4 min-h-0">
+          {messages.map((msg) => (
+            <div
+              key={msg.id}
+              className={`flex flex-col gap-1.5 ${msg.role === "user" ? "items-end" : "items-start"}`}
+            >
+              {/* label */}
+              <p className="text-xs text-gray-400 px-1">
+                {msg.role === "user" ? "You" : "Brain AI"}
+              </p>
+
+              {/* bubble */}
+              <div
+                className={`
+                  max-w-[85%] px-4 py-3 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap
+                  ${
+                    msg.role === "user"
+                      ? "bg-purple-600 text-white rounded-br-sm"
+                      : "bg-gray-100 text-gray-800 rounded-bl-sm border border-gray-200"
+                  }
+                `}
+              >
+                {msg.content}
+              </div>
+
+              {/* sources */}
+              {msg.role === "assistant" &&
+                msg.sources &&
+                msg.sources.length > 0 && (
+                  <div className="max-w-[85%] flex flex-col gap-1">
+                    <p className="text-xs text-gray-400 px-1">Sources:</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {msg.sources.slice(0, 3).map((source) => (
+                        <div
+                          key={source._id}
+                          className="flex items-center gap-1 bg-purple-300 text-purple-600 px-2 py-1 rounded-full text-xs font-medium"
+                        >
+                          <span>{typeIcon(source.type)}</span>
+                          <span className="max-w-[100px] truncate">
+                            {source.title}
+                          </span>
+                          <span className="opacity-60">
+                            {Math.round(source.score * 100)}%
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+            </div>
+          ))}
