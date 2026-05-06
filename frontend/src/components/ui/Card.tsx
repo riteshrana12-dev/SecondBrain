@@ -199,3 +199,24 @@ function Card({
           )}
         </div>
       )}
+      {/* notes for non-post types */}
+      {content.type !== "post" && content.notes && (
+        <p className="text-xs text-gray-400 leading-relaxed line-clamp-2">
+          {content.notes}
+        </p>
+      )}
+
+      {/* tags */}
+      {content.tags && content.tags.length > 0 && (
+        <div className="flex flex-wrap gap-1.5">
+          {content.tags.map((tag, idx) => (
+            <span
+              key={idx}
+              className="bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full text-xs border border-gray-200"
+            >
+              {typeof tag === "string" ? tag : tag.tag}
+            </span>
+          ))}
+        </div>
+      )}
+
