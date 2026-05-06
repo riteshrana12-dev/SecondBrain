@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import SharedBrain from "./pages/SharedBrain";
-import ErrorBoundary from "./components/Errorboundary";
+import ErrorBoundary from "./components/Errorboundary"; // ← fixed path
 import api from "./api/axios";
 
 const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
