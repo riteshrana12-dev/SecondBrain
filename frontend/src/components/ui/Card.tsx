@@ -220,3 +220,51 @@ function Card({
         </div>
       )}
 
+      {/* action buttons */}
+      {!readonly && (
+        <div className="flex gap-2 mt-1 pt-3 border-t border-gray-100">
+          {onReEmbed && (
+            <button
+              onClick={onReEmbed}
+              className="flex-1 py-1.5 text-xs font-medium text-yellow-600 bg-yellow-50 hover:bg-yellow-100 rounded-lg transition-colors border border-yellow-200"
+              title="Content not indexed for search — click to re-embed"
+            >
+              Re-index
+            </button>
+          )}
+          <button
+            onClick={onEdit}
+            className="flex-1 py-1.5 text-xs font-medium text-purple-600 bg-purple-300 hover:bg-purple-400 rounded-lg transition-colors"
+          >
+            Edit
+          </button>
+          <button
+            onClick={onDelete}
+            className="flex-1 py-1.5 text-xs font-medium text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors border border-gray-200"
+          >
+            Delete
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function extractYouTubeId(url: string): string {
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#&?]*).*/;
+  const match = url.match(regExp);
+  return match && match[2].length === 11 ? match[2] : "";
+}
+
+function getFileName(url: string): string {
+  try {
+    const decoded = decodeURIComponent(url);
+    const parts = decoded.split("/");
+    const last = parts[parts.length - 1];
+    return last.replace(/^\d+-/, "");
+  } catch {
+    return "Document";
+  }
+}
+
+export default Card;
