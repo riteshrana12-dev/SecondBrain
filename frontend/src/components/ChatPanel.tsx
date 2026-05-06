@@ -240,3 +240,62 @@ const ChatPanel = ({ isOpen, onClose }: ChatPanelProps) => {
             ))}
           </div>
         )}
+
+        {/* input */}
+        <div className="px-4 py-3 border-t border-gray-200 shrink-0">
+          <div className="flex items-center gap-2 bg-gray-100 rounded-xl px-3 py-2 border border-gray-200 focus-within:border-purple-500 focus-within:ring-1 focus-within:ring-purple-500 transition-all">
+            <input
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyDown}
+              placeholder="Ask about your saved content..."
+              disabled={loading}
+              className="flex-1 bg-transparent text-sm text-gray-700 placeholder:text-gray-400 outline-none disabled:opacity-50"
+            />
+            <button
+              onClick={handleSend}
+              disabled={!input.trim() || loading}
+              className="shrink-0 size-8 rounded-lg bg-purple-600 hover:bg-purple-700 text-white flex items-center justify-center transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              <svg
+                className="size-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                />
+              </svg>
+            </button>
+          </div>
+          <p className="text-xs text-gray-400 text-center mt-1.5">
+            Press Enter to send
+          </p>
+        </div>
+      </div>
+    </>
+  );
+};
+
+function typeIcon(type: string): string {
+  switch (type) {
+    case "youtube":
+      return "▶";
+    case "tweet":
+      return "𝕏";
+    case "document":
+      return "📄";
+    case "link":
+      return "🔗";
+    case "post":
+      return "📝";
+    default:
+      return "📌";
+  }
+}
+
+export default ChatPanel;
