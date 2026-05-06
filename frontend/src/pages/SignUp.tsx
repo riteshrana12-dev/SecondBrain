@@ -1,46 +1,30 @@
-// src/pages/SignUp.tsx
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Input from "../components/ui/Input";
 import Button from "../components/ui/Button";
-import api from "../api/axios";
+import { useAuth } from "../hooks/useAuth";
 
 const SignUp = () => {
-  const navigate = useNavigate();
+  const { signUp, loading, error } = useAuth();
   const [form, setForm] = useState({ username: "", email: "", password: "" });
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async () => {
-    setLoading(true);
-    setError("");
-    try {
-      await api.post("/auth/signup", form);
-      navigate("/signin");
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        setError(err.message);
-      } else {
-        setError("Something went wrong");
-      }
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
       <div className="bg-white rounded-xl shadow-md p-8 w-full max-w-sm flex flex-col gap-4">
-        <h1 className="text-2xl font-bold text-purple-600 text-center">
-          Second Brain
-        </h1>
-        <p className="text-gray-600 text-sm text-center">Create your account</p>
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-purple-600">Second Brain</h1>
+          <p className="text-gray-500 text-sm mt-1">Create your account</p>
+        </div>
 
-        {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+        {error && (
+          <div className="bg-red-50 border border-red-200 rounded-lg px-3 py-2">
+            <p className="text-red-600 text-sm text-center">{error}</p>
+          </div>
+        )}
 
         <Input
           label="Username"
@@ -70,7 +54,7 @@ const SignUp = () => {
           variant="primary"
           size="md"
           text={loading ? "Creating..." : "Create Account"}
-          onClick={handleSubmit}
+          onClick={() => signUp(form.username, form.email, form.password)}
           disabled={loading}
           fullWidth
         />
