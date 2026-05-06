@@ -1,10 +1,19 @@
-import { Request, Response } from "express";
+import { CookieOptions, Request, Response } from "express";
 import userModel from "../models/user.model";
 import jwt from "jsonwebtoken";
 import z from "zod";
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
 dotenv.config({ path: "./config/.env" });
+
+const isProduction = process.env.NODE_ENV === "production";
+
+const authCookieOptions: CookieOptions = {
+  httpOnly: true,
+  secure: isProduction,
+  sameSite: isProduction ? "none" : "lax",
+  path: "/",
+};
 
 const signUp = async (req: Request, res: Response) => {
   const zodValidationCheck = z.object({
@@ -96,9 +105,7 @@ const signIn = async (req: Request, res: Response) => {
     );
 
     res.cookie("token", token, {
-      httpOnly: true, // JS can't access it — XSS protection
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "none",
+      ...authCookieOptions,
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
@@ -112,7 +119,7 @@ const signIn = async (req: Request, res: Response) => {
 };
 
 const signOut = (req: Request, res: Response) => {
-  res.clearCookie("token");
+  res.clearCookie("token", authCookieOptions);
 
   return res.status(200).json({
     success: true,
