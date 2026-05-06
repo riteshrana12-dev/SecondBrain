@@ -105,3 +105,49 @@ const Sidebar = ({ activeFilter, onFilterChange }: SidebarProps) => {
       setSigningOut(false);
     }
   };
+
+  return (
+    <>
+      {/* hamburger — mobile only */}
+      <button
+        className="md:hidden fixed top-3.5 left-4 z-50 bg-white border border-gray-200 rounded-lg p-2 shadow-sm"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        {isOpen ? (
+          <svg
+            className="size-5 text-gray-600"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        ) : (
+          <svg
+            className="size-5 text-gray-600"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        )}
+      </button>
+
+      {/* overlay — mobile only */}
+      {isOpen && (
+        <div
+          className="md:hidden fixed inset-0 bg-black/30 z-30"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
