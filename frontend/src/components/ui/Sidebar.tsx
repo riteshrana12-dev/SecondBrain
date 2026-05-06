@@ -73,9 +73,14 @@ const SignOutIcon = () => (
 interface SidebarProps {
   activeFilter: string;
   onFilterChange: (filter: string) => void;
+  showSignOut?: boolean;
 }
 
-const Sidebar = ({ activeFilter, onFilterChange }: SidebarProps) => {
+const Sidebar = ({
+  activeFilter,
+  onFilterChange,
+  showSignOut = true,
+}: SidebarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [signingOut, setSigningOut] = useState(false);
   const navigate = useNavigate();
@@ -184,16 +189,18 @@ const Sidebar = ({ activeFilter, onFilterChange }: SidebarProps) => {
         </div>
 
         {/* signout at bottom */}
-        <div className="p-3 border-t border-gray-200">
-          <button
-            onClick={handleSignOut}
-            disabled={signingOut}
-            className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-red-50 hover:text-red-500 transition-colors disabled:opacity-50"
-          >
-            <SignOutIcon />
-            <span>{signingOut ? "Signing out..." : "Sign Out"}</span>
-          </button>
-        </div>
+        {showSignOut && (
+          <div className="p-3 border-t border-gray-200">
+            <button
+              onClick={handleSignOut}
+              disabled={signingOut}
+              className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-red-50 hover:text-red-500 transition-colors disabled:opacity-50"
+            >
+              <SignOutIcon />
+              <span>{signingOut ? "Signing out..." : "Sign Out"}</span>
+            </button>
+          </div>
+        )}
       </div>
     </>
   );
