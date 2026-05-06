@@ -73,4 +73,5 @@ const SignUp = () => {
   );
 };
 
+//export signUp
 export default SignUp;
