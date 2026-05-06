@@ -199,6 +199,7 @@ function Card({
           )}
         </div>
       )}
+
       {/* notes for non-post types */}
       {content.type !== "post" && content.notes && (
         <p className="text-xs text-gray-400 leading-relaxed line-clamp-2">
