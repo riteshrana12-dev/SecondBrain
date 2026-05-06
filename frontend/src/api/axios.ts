@@ -5,13 +5,18 @@ const api = axios.create({
   withCredentials: true,
 });
 
-// redirect to signin if token expired
+// redirect to signin on 401 — but skip if already on auth pages
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response?.status === 401) {
+    const isAuthPage =
+      window.location.pathname === "/signin" ||
+      window.location.pathname === "/signup";
+
+    if (error.response?.status === 401 && !isAuthPage) {
       window.location.href = "/signin";
     }
+
     return Promise.reject(error);
   },
 );
