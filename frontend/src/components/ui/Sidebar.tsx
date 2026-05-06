@@ -74,3 +74,34 @@ interface SidebarProps {
   activeFilter: string;
   onFilterChange: (filter: string) => void;
 }
+
+const Sidebar = ({ activeFilter, onFilterChange }: SidebarProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [signingOut, setSigningOut] = useState(false);
+  const navigate = useNavigate();
+
+  const items = [
+    { icon: <AllIcon />, text: "All", value: "all" },
+    { icon: <TwitterIcon />, text: "Tweets", value: "tweet" },
+    { icon: <YoutubeIcon />, text: "YouTube", value: "youtube" },
+    { icon: <DocumentIcon />, text: "Documents", value: "document" },
+    { icon: <LinkIcon />, text: "Links", value: "link" },
+    { icon: <PostIcon />, text: "Posts", value: "post" },
+  ];
+
+  const handleFilterChange = (value: string) => {
+    onFilterChange(value);
+    setIsOpen(false);
+  };
+
+  const handleSignOut = async () => {
+    setSigningOut(true);
+    try {
+      await api.post("/auth/signout");
+    } catch {
+      // even if request fails, clear and redirect
+    } finally {
+      navigate("/signin");
+      setSigningOut(false);
+    }
+  };
