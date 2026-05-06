@@ -10,8 +10,8 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     const isAuthPage =
-      window.location.pathname === "auth/signin" ||
-      window.location.pathname === "auth/signup";
+      window.location.pathname === "/signin" ||
+      window.location.pathname === "/signup";
 
     if (error.response?.status === 401 && !isAuthPage) {
       window.location.href = "/signin";
