@@ -6,12 +6,10 @@ import bcrypt from "bcrypt";
 import dotenv from "dotenv";
 dotenv.config({ path: "./config/.env" });
 
-const isProduction = process.env.NODE_ENV === "production";
-
 const authCookieOptions: CookieOptions = {
   httpOnly: true,
-  secure: isProduction,
-  sameSite: isProduction ? "none" : "lax",
+  secure: true,
+  sameSite: "none",
   path: "/",
 };
 
