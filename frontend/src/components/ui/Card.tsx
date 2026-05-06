@@ -56,3 +56,146 @@ function Card({
           View Tweet
         </a>
       )}
+
+      {/* document */}
+      {content.type === "document" && (
+        <div className="border border-gray-200 rounded-lg bg-gray-100 overflow-hidden">
+          {content.fileUrl ? (
+            <a
+              href={content.fileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 px-4 py-3 hover:bg-gray-200 transition-colors group"
+            >
+              <div className="size-9 rounded-lg bg-purple-300 flex items-center justify-center shrink-0">
+                <svg
+                  className="size-5 text-purple-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  />
+                </svg>
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium text-gray-700 truncate">
+                  {getFileName(content.fileUrl)}
+                </p>
+                <p className="text-xs text-gray-400">Click to open</p>
+              </div>
+              <svg
+                className="size-4 text-gray-400 group-hover:text-purple-600 transition-colors shrink-0"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                />
+              </svg>
+            </a>
+          ) : content.link ? (
+            <a
+              href={content.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 px-4 py-3 hover:bg-gray-200 transition-colors group"
+            >
+              <div className="size-9 rounded-lg bg-purple-300 flex items-center justify-center shrink-0">
+                <svg
+                  className="size-5 text-purple-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  />
+                </svg>
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium text-gray-700 truncate">
+                  {content.link}
+                </p>
+                <p className="text-xs text-gray-400">Click to open</p>
+              </div>
+              <svg
+                className="size-4 text-gray-400 group-hover:text-purple-600 transition-colors shrink-0"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                />
+              </svg>
+            </a>
+          ) : (
+            <div className="flex items-center gap-3 px-4 py-3">
+              <div className="size-9 rounded-lg bg-purple-300 flex items-center justify-center shrink-0">
+                <svg
+                  className="size-5 text-purple-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  />
+                </svg>
+              </div>
+              <p className="text-sm text-gray-500">Document</p>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* link */}
+      {content.type === "link" && content.link && (
+        <a
+          href={content.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-purple-600 text-sm underline underline-offset-2 hover:text-purple-500 break-all"
+        >
+          {content.link}
+        </a>
+      )}
+
+      {/* post */}
+      {content.type === "post" && (
+        <div className="flex flex-col gap-2">
+          {content.notes && (
+            <p className="text-sm text-gray-600 leading-relaxed">
+              {content.notes}
+            </p>
+          )}
+          {content.link && (
+            <a
+              href={content.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-purple-600 hover:underline font-medium"
+            >
+              Open
+            </a>
+          )}
+        </div>
+      )}
