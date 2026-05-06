@@ -155,3 +155,65 @@ const Modal = ({ isOpen, onClose, onSuccess, editContent }: ModalProps) => {
               placeholder="https://..."
             />
           )}
+
+          {/* file upload — only for document type */}
+          {form.type === "document" && (
+            <div className="flex flex-col gap-1">
+              <label className="text-sm font-medium text-gray-600">
+                Upload PDF
+                {isEditMode && editContent?.fileUrl && (
+                  <span className="ml-2 text-xs text-gray-400 font-normal">
+                    (leave empty to keep existing file)
+                  </span>
+                )}
+              </label>
+
+              {/* show existing file in edit mode */}
+              {isEditMode && editContent?.fileUrl && !file && (
+                <div className="flex items-center gap-2 bg-purple-300 text-purple-600 px-3 py-2 rounded-lg text-sm">
+                  <span>📄</span>
+                  <span className="flex-1 truncate text-xs">
+                    Current file attached
+                  </span>
+                  <a
+                    href={editContent.fileUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs underline shrink-0"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    View
+                  </a>
+                </div>
+              )}
+
+              <input
+                type="file"
+                accept=".pdf,image/jpeg,image/png"
+                onChange={(e) => setFile(e.target.files?.[0] || null)}
+                className="border border-gray-200 rounded-md px-3 py-2 text-sm
+                           focus:outline-none focus:ring-2 focus:ring-purple-500
+                           file:mr-3 file:py-1 file:px-3 file:rounded-md
+                           file:border-0 file:text-xs file:font-medium
+                           file:bg-purple-300 file:text-purple-600
+                           hover:file:bg-purple-400 cursor-pointer"
+              />
+              {file && (
+                <div className="flex items-center gap-2 mt-1">
+                  <span className="text-xs text-gray-400">Selected:</span>
+                  <span className="text-xs text-purple-600 font-medium truncate">
+                    {file.name}
+                  </span>
+                  <button
+                    onClick={() => setFile(null)}
+                    className="text-xs text-gray-400 hover:text-red-500 shrink-0"
+                  >
+                    Remove
+                  </button>
+                </div>
+              )}
+              <p className="text-xs text-gray-400">
+                PDF, JPG or PNG — max 10MB
+              </p>
+            </div>
+          )}
