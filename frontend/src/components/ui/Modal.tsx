@@ -217,3 +217,58 @@ const Modal = ({ isOpen, onClose, onSuccess, editContent }: ModalProps) => {
               </p>
             </div>
           )}
+          {/* notes */}
+          <div className="flex flex-col gap-1">
+            <label className="text-sm font-medium text-gray-600">Notes</label>
+            <textarea
+              name="notes"
+              value={form.notes}
+              onChange={handleChange}
+              placeholder="Your notes about this content..."
+              rows={3}
+              className="border border-gray-200 rounded-md px-3 py-2 text-sm
+                         focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none"
+            />
+          </div>
+
+          <Input
+            label="Tags (comma separated)"
+            name="tags"
+            value={form.tags}
+            onChange={handleChange}
+            placeholder="react, frontend, css"
+          />
+        </div>
+
+        {/* sticky footer */}
+        <div className="flex gap-3 px-6 py-4 border-t border-gray-200 sticky bottom-0 bg-white rounded-b-xl">
+          <Button
+            variant="secondary"
+            size="md"
+            text="Cancel"
+            onClick={onClose}
+            fullWidth
+          />
+          <Button
+            variant="primary"
+            size="md"
+            text={
+              loading
+                ? isEditMode
+                  ? "Saving..."
+                  : "Adding..."
+                : isEditMode
+                  ? "Save Changes"
+                  : "Add Content"
+            }
+            onClick={handleSubmit}
+            disabled={loading}
+            fullWidth
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Modal;
