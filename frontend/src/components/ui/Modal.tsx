@@ -89,3 +89,69 @@ const Modal = ({ isOpen, onClose, onSuccess, editContent }: ModalProps) => {
       setLoading(false);
     }
   };
+
+  return (
+    <div
+      className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 px-4"
+      onClick={onClose}
+    >
+      <div
+        className="bg-white rounded-xl w-full max-w-md shadow-xl flex flex-col max-h-[90vh] overflow-y-auto"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* sticky header */}
+        <div className="flex justify-between items-center px-6 pt-6 pb-4 border-b border-gray-200 sticky top-0 bg-white rounded-t-xl">
+          <h2 className="text-lg font-bold text-gray-800">
+            {isEditMode ? "Edit Content" : "Add Content"}
+          </h2>
+          <button
+            onClick={onClose}
+            className="text-gray-400 hover:text-gray-600 text-xl leading-none"
+          >
+            x
+          </button>
+        </div>
+
+        {/* form body */}
+        <div className="flex flex-col gap-4 px-6 py-4">
+          {error && (
+            <p className="text-red-500 text-sm bg-red-50 px-3 py-2 rounded-lg">
+              {error}
+            </p>
+          )}
+
+          <Input
+            label="Title *"
+            name="title"
+            value={form.title}
+            onChange={handleChange}
+            placeholder="e.g. React hooks tutorial"
+          />
+
+          {/* type selector */}
+          <div className="flex flex-col gap-1">
+            <label className="text-sm font-medium text-gray-600">Type *</label>
+            <select
+              name="type"
+              value={form.type}
+              onChange={handleChange}
+              className="border border-gray-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+            >
+              {CONTENT_TYPES.map((t) => (
+                <option key={t} value={t}>
+                  {t.charAt(0).toUpperCase() + t.slice(1)}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* link — hide for post type since posts are text only */}
+          {form.type !== "post" && (
+            <Input
+              label="Link"
+              name="link"
+              value={form.link}
+              onChange={handleChange}
+              placeholder="https://..."
+            />
+          )}
