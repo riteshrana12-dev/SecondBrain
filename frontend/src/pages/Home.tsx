@@ -3,7 +3,7 @@ import Sidebar from "../components/ui/Sidebar";
 import Card from "../components/ui/Card";
 import Modal from "../components/ui/Modal";
 import SearchBar from "../components/ui/SearchBar";
-import ChatPanel from "../components/ChatPanel";
+import ChatPanel from "../components/ChatPanel"; // ← fixed path
 import { SkeletonGrid } from "../components/ui/SkeletonCard";
 import PlusIcon from "../icons/PlusIcon";
 import ShareIcon from "../icons/ShareIcon";
@@ -93,11 +93,9 @@ const Home = () => {
   const handleReEmbed = async (id: string) => {
     try {
       await api.post(`/content/reembed/${id}`);
-      // optimistically update the card to show embedding started
       setContents((prev) =>
         prev.map((c) => (c._id === id ? { ...c, isEmbedded: false } : c)),
       );
-      // refetch after 5s to get updated isEmbedded status
       setTimeout(fetchContent, 5000);
     } catch (err) {
       console.error(err);
