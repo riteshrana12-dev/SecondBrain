@@ -65,7 +65,11 @@ const SharedBrain = () => {
 
   return (
     <div className="flex h-screen bg-gray-100 overflow-hidden">
-      <Sidebar activeFilter={activeFilter} onFilterChange={setActiveFilter} />
+      <Sidebar
+        activeFilter={activeFilter}
+        onFilterChange={setActiveFilter}
+        showSignOut={false}
+      />
 
       <div className="flex-1 flex flex-col overflow-hidden min-w-0">
         {/* ── Top bar ── */}
