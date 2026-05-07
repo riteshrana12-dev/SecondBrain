@@ -194,7 +194,7 @@ function Card({
               rel="noopener noreferrer"
               className="text-xs text-purple-600 hover:underline font-medium"
             >
-              Open
+              Open post
             </a>
           )}
         </div>
