@@ -145,16 +145,13 @@ const Modal = ({ isOpen, onClose, onSuccess, editContent }: ModalProps) => {
             </select>
           </div>
 
-          {/* link — hide for post type since posts are text only */}
-          {form.type !== "post" && (
-            <Input
-              label="Link"
-              name="link"
-              value={form.link}
-              onChange={handleChange}
-              placeholder="https://..."
-            />
-          )}
+          <Input
+            label="Link"
+            name="link"
+            value={form.link}
+            onChange={handleChange}
+            placeholder="https://..."
+          />
 
           {/* file upload — only for document type */}
           {form.type === "document" && (
