@@ -455,21 +455,6 @@ Add the same environment variables from `.env` in the Render dashboard under Env
 
 ---
 
-## Screenshots Guide
-
-To add screenshots to this README:
-
-| Step | Action                                                         |
-| ---- | -------------------------------------------------------------- |
-| 1    | Create `docs/images/` folder in repo root                      |
-| 2    | Take screenshots of dashboard, chat, modal, shared view        |
-| 3    | Save as `dashboard.png`, `chat.png`, `modal.png`, `shared.png` |
-| 4    | Replace placeholder text in the Screenshots section above      |
-| 5    | Use: `![Description](./docs/images/filename.png)`              |
-
-<br/>
-
----
 
 ## Contributing
 
