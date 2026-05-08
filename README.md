@@ -299,13 +299,6 @@ SecondBrain/
 |   +-- tailwind.config.ts
 |   +-- vite.config.ts
 |
-+-- docs/
-|   +-- images/
-|       +-- dashboard.png                [ADD YOUR SCREENSHOT HERE]
-|       +-- chat.png                     [ADD YOUR SCREENSHOT HERE]
-|       +-- modal.png                    [ADD YOUR SCREENSHOT HERE]
-|       +-- shared.png                   [ADD YOUR SCREENSHOT HERE]
-|
 +-- README.md
 ```
 
