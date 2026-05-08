@@ -1,335 +1,377 @@
-
 <div align="center">
 
-# 🧠 Second Brain
-
-### *Your personal AI-powered knowledge base*
-
-> Save anything. Find everything. Ask your brain.
-
-<!-- 🖼️ ADD YOUR HERO SCREENSHOT HERE -->
-<!-- Replace the line below with your actual screenshot -->
-<!-- ![Second Brain Dashboard](./docs/images/dashboard.png) -->
-> 📸 **[Add your dashboard screenshot here]** — Recommended size: 1280x720px
+<!-- Animated title using SVG -->
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=40&pause=1000&color=7164C0&center=true&vCenter=true&width=600&height=80&lines=Second+Brain;Your+AI+Knowledge+Base;Save.+Search.+Ask." alt="Second Brain" />
 
 <br/>
 
-[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Vercel-black?style=for-the-badge&logo=vercel)](https://your-app.vercel.app)
-[![Backend](https://img.shields.io/badge/⚙️_Backend-Render-46E3B7?style=for-the-badge&logo=render)](https://secondbrain-backend.onrender.com)
-[![License](https://img.shields.io/badge/License-MIT-purple?style=for-the-badge)](./LICENSE)
-[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+<!-- Animated subtitle -->
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=400&size=18&pause=2000&color=95989C&center=true&vCenter=true&width=600&height=40&lines=Save+anything.+Find+everything.+Ask+your+brain." alt="subtitle" />
+
+<br/><br/>
+
+<!-- Badges -->
+<a href="https://your-app.vercel.app">
+  <img src="https://img.shields.io/badge/Live_Demo-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" />
+</a>
+&nbsp;
+<a href="https://secondbrain-backend.onrender.com/health">
+  <img src="https://img.shields.io/badge/Backend-Render-46E3B7?style=for-the-badge&logo=render&logoColor=white" />
+</a>
+&nbsp;
+<img src="https://img.shields.io/badge/TypeScript-Full_Stack-007ACC?style=for-the-badge&logo=typescript&logoColor=white" />
+&nbsp;
+<img src="https://img.shields.io/badge/AI_Powered-RAG+Embeddings-7164C0?style=for-the-badge&logo=openai&logoColor=white" />
+
+<br/><br/>
+
+<!-- Divider -->
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%"/>
 
 </div>
 
----
+<br/>
 
-## ✨ What is Second Brain?
+<!-- SCREENSHOT SECTION -->
+<div align="center">
 
-**Second Brain** is a full-stack AI-powered personal knowledge management app. Think of it as your external memory — save YouTube videos, tweets, documents, PDFs, links, and notes in one place. Then **ask your AI** questions about everything you've saved.
+### Dashboard Preview
 
-Instead of bookmarking things and forgetting them, Second Brain lets you:
+<!-- ADD YOUR SCREENSHOT HERE -->
+<!-- 1. Create a docs/images/ folder in your repo -->
+<!-- 2. Take a screenshot of your dashboard -->
+<!-- 3. Replace the line below with your actual image -->
+<!-- ![Dashboard](./docs/images/dashboard.png) -->
 
-- 📥 **Save** any content — YouTube, tweets, PDFs, links, posts
-- 🔍 **Search semantically** — find "videos about neural networks" even if you saved it as "3Blue1Brown deep learning"
-- 🤖 **Ask your AI** — "What do I know about system design?" and get an answer synthesized from your own saved content
-- 🔗 **Share your brain** — generate a public link so others can browse your knowledge base
-- 📄 **Upload PDFs** — your notes, research papers, textbooks — all searchable
+> **[Add your dashboard screenshot here]**
+> Recommended: 1280x720px — place at `docs/images/dashboard.png`
 
----
+</div>
 
-## 🖼️ Screenshots
-
-<!-- 🖼️ ADD YOUR SCREENSHOTS HERE -->
-<!-- Recommended: Add 3-4 screenshots showing different features -->
-<!-- Example structure: -->
-
-| Feature | Screenshot |
-|---------|-----------|
-| 🏠 Dashboard | `📸 [Add dashboard.png here]` |
-| 🤖 AI Chat | `📸 [Add chat.png here]` |
-| ➕ Add Content | `📸 [Add modal.png here]` |
-| 🔗 Shared Brain | `📸 [Add shared.png here]` |
-
-> **How to add screenshots:**
-> 1. Create a `docs/images/` folder in your repo root
-> 2. Add your screenshots there
-> 3. Replace the placeholder text above with: `![Description](./docs/images/filename.png)`
+<br/>
 
 ---
 
-## 🚀 Features
+## What is Second Brain
 
-### Core
-- ✅ **Authentication** — Secure signup/signin with HTTP-only cookies + JWT
-- ✅ **5 Content Types** — YouTube, Tweet, Document, Link, Post
-- ✅ **PDF Upload** — Upload PDFs to Supabase Storage, text extracted automatically
-- ✅ **CRUD** — Add, edit, delete, and filter all your content
+Second Brain is a full-stack AI-powered personal knowledge management system. It acts as your external memory — save YouTube videos, tweets, PDFs, links and notes in one place, then ask your AI assistant questions about everything you have saved.
 
-### AI Features
-- ✅ **Semantic Search** — Vector embeddings via Jina AI + MongoDB Atlas `$vectorSearch`
-- ✅ **RAG Chat** — Ask questions about your saved content, powered by Groq LLaMA3
-- ✅ **Auto-embedding** — Every piece of content is embedded in the background after saving
-- ✅ **PDF Text Extraction** — PDFs are parsed and embedded for full-text semantic search
-
-### Sharing
-- ✅ **Share Brain** — Generate a public read-only link to your entire knowledge base
-- ✅ **Shared View** — Visitors can filter and search your brain without an account
-
-### UX
-- ✅ **Fully Responsive** — Mobile, tablet, desktop
-- ✅ **Skeleton Loading** — Smooth loading states instead of blank screens
-- ✅ **Error Boundaries** — App never fully crashes
-- ✅ **Re-index Button** — Re-embed content that failed indexing
+<br/>
 
 ---
 
-## 🛠️ Tech Stack
+## Feature Overview
+
+| Category | Feature | Description |
+|----------|---------|-------------|
+| **Content** | Save YouTube | Transcript is auto-fetched and embedded |
+| **Content** | Save Tweets | Store with notes and tags |
+| **Content** | Upload PDF | Text extracted via pdf-parse, indexed for search |
+| **Content** | Save Links | Webpage is scraped and embedded |
+| **Content** | Write Posts | Plain text notes saved and indexed |
+| **AI** | Semantic Search | Find content by meaning, not just keywords |
+| **AI** | RAG Chat | Ask questions, get answers from your own content |
+| **AI** | Auto Embedding | Every save is embedded in the background |
+| **AI** | Re-index | Manually re-embed failed content |
+| **Sharing** | Share Brain | Generate a public read-only link |
+| **Sharing** | Shared View | Visitors can filter and search your brain |
+| **Auth** | Cookie Auth | HTTP-only JWT cookies, secure in production |
+| **UX** | Responsive | Mobile, tablet, and desktop layouts |
+| **UX** | Skeleton Loading | Smooth loading states |
+| **UX** | Error Boundary | App never fully crashes |
+
+<br/>
+
+---
+
+## Tech Stack
 
 ### Frontend
-| Technology | Purpose |
-|-----------|---------|
-| **React 18** + **Vite** | UI framework + build tool |
-| **TypeScript** | Type safety |
-| **Tailwind CSS** | Styling |
-| **React Router v6** | Client-side routing |
-| **Axios** | HTTP client with interceptors |
+
+| Technology | Version | Purpose |
+|-----------|---------|---------|
+| React | 18 | UI framework |
+| Vite | 5 | Build tool and dev server |
+| TypeScript | 5 | Type safety |
+| Tailwind CSS | 3 | Utility-first styling |
+| React Router | v6 | Client-side routing |
+| Axios | latest | HTTP client with interceptors |
 
 ### Backend
-| Technology | Purpose |
-|-----------|---------|
-| **Node.js** + **Express** | REST API server |
-| **TypeScript** | Type safety |
-| **Mongoose** | MongoDB ODM |
-| **JWT** + **bcrypt** | Authentication |
-| **Multer** | File upload handling |
-| **Zod** | Request validation |
-| **pdf-parse** | PDF text extraction |
 
-### AI & Storage
-| Technology | Purpose |
-|-----------|---------|
-| **Jina AI** `jina-embeddings-v3` | Text → vector embeddings (1024 dims) |
-| **MongoDB Atlas** `$vectorSearch` | Vector similarity search |
-| **Groq** `llama-3.1-8b-instant` | LLM for RAG chat responses |
-| **Supabase Storage** | PDF and file storage |
-| **YouTube Transcript API** | Auto-fetch YouTube transcripts |
-| **Cheerio** + **Axios** | Web scraping for links |
+| Technology | Version | Purpose |
+|-----------|---------|---------|
+| Node.js | 18+ | Runtime |
+| Express | 4 | REST API framework |
+| TypeScript | 5 | Type safety |
+| Mongoose | 8 | MongoDB ODM |
+| JWT + bcrypt | latest | Authentication and password hashing |
+| Multer | latest | Multipart file upload handling |
+| Zod | 3 | Request body validation |
+| pdf-parse | 1.1.1 | PDF text extraction |
+| Cheerio + Axios | latest | Web scraping for links |
+| youtube-transcript | latest | Auto-fetch YouTube transcripts |
+
+### AI and Storage
+
+| Service | Model / Plan | Purpose |
+|---------|-------------|---------|
+| Jina AI | jina-embeddings-v3 (1024 dims) | Convert text to vectors |
+| MongoDB Atlas | $vectorSearch | Cosine similarity vector search |
+| Groq | llama-3.1-8b-instant | LLM for RAG chat responses |
+| Supabase Storage | Free tier | PDF and file storage |
 
 ### Infrastructure
-| Service | Purpose |
-|---------|---------|
-| **MongoDB Atlas** | Primary database |
-| **Render** | Backend hosting |
-| **Vercel** | Frontend hosting |
-| **Supabase** | File storage |
+
+| Service | Platform | Purpose |
+|---------|---------|---------|
+| Frontend | Vercel | Static hosting with CDN |
+| Backend | Render | Node.js web service |
+| Database | MongoDB Atlas | Cloud database with vector index |
+| Storage | Supabase | Object storage for files |
+
+<br/>
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                        USER BROWSER                          │
-│                    React + Vite (Vercel)                     │
-└──────────────────────────┬──────────────────────────────────┘
-                           │ HTTPS + Cookie Auth
-                           ▼
-┌─────────────────────────────────────────────────────────────┐
-│                    EXPRESS REST API                           │
-│                      (Render)                                │
-│                                                             │
-│  /auth    /content    /search    /chat    /brain            │
-└──────┬──────────┬──────────┬────────┬──────────────────────┘
-       │          │          │        │
-       ▼          ▼          ▼        ▼
-┌──────────┐ ┌────────┐ ┌───────┐ ┌──────────────────┐
-│ MongoDB  │ │Supabase│ │ Jina  │ │   Groq LLaMA3    │
-│  Atlas   │ │Storage │ │  AI   │ │   RAG Engine     │
-│(Database)│ │(Files) │ │(Embed)│ │  (Chat Answer)   │
-└──────────┘ └────────┘ └───────┘ └──────────────────┘
++----------------------------------------------------------+
+|                    USER BROWSER                           |
+|               React + Vite  (Vercel)                     |
++-----------------------------+----------------------------+
+                              |
+                    HTTPS + Cookie Auth
+                              |
+                              v
++----------------------------------------------------------+
+|                  EXPRESS REST API                         |
+|                    (Render)                              |
+|                                                          |
+|   /auth    /content    /search    /chat    /brain        |
++------+----------+----------+--------+-------------------+
+       |          |          |        |
+       v          v          v        v
++----------+ +--------+ +-------+ +------------------+
+| MongoDB  | |Supabase| | Jina  | |   Groq LLaMA3   |
+|  Atlas   | |Storage | |  AI   | |   RAG Engine    |
+| Database | | Files  | | Embed | |  Chat Answers   |
++----------+ +--------+ +-------+ +------------------+
 ```
 
-### RAG Flow (How AI Chat Works)
+### RAG Pipeline — How AI Chat Works
 
-```
-User asks: "What do I know about system design?"
-                    │
-                    ▼
-        Embed question → 1024 numbers
-                    │
-                    ▼
-        $vectorSearch in MongoDB Atlas
-        → Find top 5 semantically similar docs
-                    │
-                    ▼
-        Build prompt:
-        "Based on these docs from user's brain:
-         [Doc 1]... [Doc 2]... [Doc 3]...
-         Answer: What do I know about system design?"
-                    │
-                    ▼
-        Groq LLaMA3 generates answer
-                    │
-                    ▼
-        Return { answer, sources[] }
-```
+| Step | Action | Detail |
+|------|--------|--------|
+| 1 | User sends question | "What do I know about system design?" |
+| 2 | Embed the question | Jina AI converts query to 1024-dim vector |
+| 3 | Vector search | MongoDB Atlas finds top 5 semantically similar docs |
+| 4 | Build prompt | Inject matching documents as context into LLM prompt |
+| 5 | LLM generates answer | Groq LLaMA3 answers using only user's saved content |
+| 6 | Return response | `{ answer, sources[] }` sent back to frontend |
+
+### Embedding Pipeline — How Content Gets Indexed
+
+| Content Type | Fetch Method | Embedding Input |
+|-------------|-------------|----------------|
+| YouTube | youtube-transcript API | Full transcript text |
+| Link | Cheerio webpage scraper | Article body text |
+| Document | pdf-parse on Supabase file | Extracted PDF text |
+| Tweet | Not fetched | Title + user notes |
+| Post | Not fetched | User notes directly |
+
+All types: `title + notes + extractedText` → Jina AI → 1024 numbers → saved to MongoDB
+
+<br/>
 
 ---
 
-## 📁 Project Structure
+## API Reference
+
+| Method | Endpoint | Auth | Description |
+|--------|---------|:----:|-------------|
+| POST | `/api/v1/auth/signup` | No | Register new user |
+| POST | `/api/v1/auth/signin` | No | Login and set cookie |
+| POST | `/api/v1/auth/signout` | Yes | Logout and clear cookie |
+| POST | `/api/v1/content/add` | Yes | Add content, supports file upload |
+| GET | `/api/v1/content/get` | Yes | Get all user content |
+| PUT | `/api/v1/content/:id` | Yes | Update content |
+| DELETE | `/api/v1/content/:id` | Yes | Delete content and file from Supabase |
+| POST | `/api/v1/content/reembed/:id` | Yes | Re-index failed embedding |
+| GET | `/api/v1/search?query=` | Yes | Semantic vector search |
+| POST | `/api/v1/chat` | Yes | RAG chat with your brain |
+| POST | `/api/v1/brain/share` | Yes | Generate or get share link |
+| GET | `/api/v1/brain/:hash` | No | Public view of shared brain |
+| GET | `/health` | No | Health check for uptime monitoring |
+
+<br/>
+
+---
+
+## Project Structure
 
 ```
 SecondBrain/
-│
-├── 📂 backend/
-│   ├── 📂 src/
-│   │   ├── 📂 config/
-│   │   │   ├── db.ts                    # MongoDB connection
-│   │   │   └── supabase.ts              # Supabase client
-│   │   │
-│   │   ├── 📂 controllers/
-│   │   │   ├── auth.controller.ts       # Signup, signin, signout
-│   │   │   ├── content.controller.ts    # CRUD for content
-│   │   │   ├── search.controller.ts     # Vector search
-│   │   │   ├── chat.controller.ts       # RAG chat
-│   │   │   ├── share.controller.ts      # Share brain link
-│   │   │   └── tags.controller.ts       # Tag management
-│   │   │
-│   │   ├── 📂 middleware/
-│   │   │   ├── auth.middleware.ts       # JWT cookie verification
-│   │   │   └── upload.middleware.ts     # Multer file upload
-│   │   │
-│   │   ├── 📂 models/
-│   │   │   ├── user.model.ts            # User schema
-│   │   │   ├── content.model.ts         # Content schema (+ embedding[])
-│   │   │   ├── tag.model.ts             # Tag schema
-│   │   │   └── shareLink.model.ts       # Share link schema
-│   │   │
-│   │   ├── 📂 routes/
-│   │   │   ├── auth.route.ts
-│   │   │   ├── content.route.ts
-│   │   │   ├── search.route.ts
-│   │   │   ├── chat.route.ts
-│   │   │   ├── share.route.ts
-│   │   │   └── tags.route.ts
-│   │   │
-│   │   ├── 📂 services/
-│   │   │   ├── embeddingService.ts      # Jina AI + content fetching
-│   │   │   ├── chatService.ts           # RAG pipeline + Groq
-│   │   │   └── fileService.ts           # Supabase upload + PDF parse
-│   │   │
-│   │   ├── 📂 utils/
-│   │   │   ├── tags.ts                  # resolveTagIds helper
-│   │   │   └── hash.ts                  # Share link hash generator
-│   │   │
-│   │   ├── 📂 types/
-│   │   │   └── express.d.ts             # Express request augmentation
-│   │   │
-│   │   ├── app.ts                       # Express app setup
-│   │   └── server.ts                    # Entry point + keep-alive
-│   │
-│   ├── package.json
-│   └── tsconfig.json
-│
-├── 📂 frontend/
-│   ├── 📂 src/
-│   │   ├── 📂 api/
-│   │   │   └── axios.ts                 # Axios instance + interceptors
-│   │   │
-│   │   ├── 📂 components/
-│   │   │   └── 📂 ui/
-│   │   │       ├── Button.tsx
-│   │   │       ├── Card.tsx             # Content card (all 5 types)
-│   │   │       ├── ChatPanel.tsx        # RAG chat panel
-│   │   │       ├── ErrorBoundary.tsx    # Error boundary wrapper
-│   │   │       ├── Input.tsx
-│   │   │       ├── Modal.tsx            # Add/Edit content form
-│   │   │       ├── SearchBar.tsx
-│   │   │       ├── Sidebar.tsx          # Filter nav + signout
-│   │   │       ├── SidebarItems.tsx
-│   │   │       └── SkeletonCard.tsx     # Loading skeleton
-│   │   │
-│   │   ├── 📂 hooks/
-│   │   │   ├── useAuth.ts               # Auth logic hook
-│   │   │   └── useContent.ts            # Content CRUD hook
-│   │   │
-│   │   ├── 📂 icons/
-│   │   │   ├── PlusIcon.tsx
-│   │   │   └── ShareIcon.tsx
-│   │   │
-│   │   ├── 📂 pages/
-│   │   │   ├── Home.tsx                 # Main dashboard
-│   │   │   ├── SignIn.tsx
-│   │   │   ├── SignUp.tsx
-│   │   │   └── SharedBrain.tsx          # Public read-only view
-│   │   │
-│   │   ├── 📂 types/
-│   │   │   └── index.tsx                # Shared TypeScript interfaces
-│   │   │
-│   │   ├── App.tsx                      # Routes + ErrorBoundary
-│   │   └── main.tsx                     # React entry point
-│   │
-│   ├── .env.production
-│   ├── package.json
-│   ├── tailwind.config.ts
-│   └── vite.config.ts
-│
-└── README.md
+|
++-- backend/
+|   +-- src/
+|   |   +-- config/
+|   |   |   +-- db.ts                    MongoDB connection
+|   |   |   +-- supabase.ts              Supabase client init
+|   |   |
+|   |   +-- controllers/
+|   |   |   +-- auth.controller.ts       Signup, signin, signout
+|   |   |   +-- content.controller.ts    CRUD + file upload
+|   |   |   +-- search.controller.ts     Vector search with $lookup
+|   |   |   +-- chat.controller.ts       RAG chat entry point
+|   |   |   +-- share.controller.ts      Share link generation
+|   |   |   +-- tags.controller.ts       Tag upsert
+|   |   |
+|   |   +-- middleware/
+|   |   |   +-- auth.middleware.ts       JWT cookie verification
+|   |   |   +-- upload.middleware.ts     Multer memory storage
+|   |   |
+|   |   +-- models/
+|   |   |   +-- user.model.ts
+|   |   |   +-- content.model.ts         Includes embedding[] field
+|   |   |   +-- tag.model.ts
+|   |   |   +-- shareLink.model.ts
+|   |   |
+|   |   +-- routes/
+|   |   |   +-- auth.route.ts
+|   |   |   +-- content.route.ts
+|   |   |   +-- search.route.ts
+|   |   |   +-- chat.route.ts
+|   |   |   +-- share.route.ts
+|   |   |   +-- tags.route.ts
+|   |   |
+|   |   +-- services/
+|   |   |   +-- embeddingService.ts      Jina AI + content fetch per type
+|   |   |   +-- chatService.ts           RAG pipeline + Groq LLM
+|   |   |   +-- fileService.ts           Supabase upload + PDF parse
+|   |   |
+|   |   +-- utils/
+|   |   |   +-- tags.ts                  resolveTagIds helper
+|   |   |   +-- hash.ts                  Share link hash generator
+|   |   |
+|   |   +-- types/
+|   |   |   +-- express.d.ts             Augments Request with user_id
+|   |   |
+|   |   +-- app.ts                       Express app, CORS, routes
+|   |   +-- server.ts                    Entry point, keep-alive ping
+|   |
+|   +-- package.json
+|   +-- tsconfig.json
+|
++-- frontend/
+|   +-- src/
+|   |   +-- api/
+|   |   |   +-- axios.ts                 Axios instance + 401 interceptor
+|   |   |
+|   |   +-- components/
+|   |   |   +-- ui/
+|   |   |       +-- Button.tsx
+|   |   |       +-- Card.tsx             All 5 content types + fileUrl
+|   |   |       +-- ChatPanel.tsx        RAG chat with sources display
+|   |   |       +-- ErrorBoundary.tsx    Class component error boundary
+|   |   |       +-- Input.tsx
+|   |   |       +-- Modal.tsx            Add and edit content form
+|   |   |       +-- SearchBar.tsx
+|   |   |       +-- Sidebar.tsx          Filter nav + signout
+|   |   |       +-- SidebarItems.tsx
+|   |   |       +-- SkeletonCard.tsx     Pulse loading skeleton
+|   |   |
+|   |   +-- hooks/
+|   |   |   +-- useAuth.ts               signIn, signUp, signOut
+|   |   |   +-- useContent.ts            fetch, add, delete, update, search
+|   |   |
+|   |   +-- icons/
+|   |   |   +-- PlusIcon.tsx
+|   |   |   +-- ShareIcon.tsx
+|   |   |
+|   |   +-- pages/
+|   |   |   +-- Home.tsx                 Main dashboard
+|   |   |   +-- SignIn.tsx
+|   |   |   +-- SignUp.tsx
+|   |   |   +-- SharedBrain.tsx          Public read-only view
+|   |   |
+|   |   +-- types/
+|   |   |   +-- index.tsx                Content, Tag, User interfaces
+|   |   |
+|   |   +-- App.tsx                      Routes + PrivateRoute + ErrorBoundary
+|   |   +-- main.tsx                     React entry point
+|   |
+|   +-- .env.production
+|   +-- package.json
+|   +-- tailwind.config.ts
+|   +-- vite.config.ts
+|
++-- docs/
+|   +-- images/
+|       +-- dashboard.png                [ADD YOUR SCREENSHOT HERE]
+|       +-- chat.png                     [ADD YOUR SCREENSHOT HERE]
+|       +-- modal.png                    [ADD YOUR SCREENSHOT HERE]
+|       +-- shared.png                   [ADD YOUR SCREENSHOT HERE]
+|
++-- README.md
 ```
+
+<br/>
 
 ---
 
-## ⚡ Getting Started
+## Getting Started
 
 ### Prerequisites
 
-- Node.js 18+
-- MongoDB Atlas account
-- Jina AI API key — [jina.ai](https://jina.ai) (free)
-- Groq API key — [console.groq.com](https://console.groq.com) (free)
-- Supabase account — [supabase.com](https://supabase.com) (free)
+| Requirement | Version | Link |
+|------------|---------|------|
+| Node.js | 18+ | [nodejs.org](https://nodejs.org) |
+| MongoDB Atlas | Free tier | [cloud.mongodb.com](https://cloud.mongodb.com) |
+| Jina AI API key | Free | [jina.ai](https://jina.ai) |
+| Groq API key | Free | [console.groq.com](https://console.groq.com) |
+| Supabase account | Free tier | [supabase.com](https://supabase.com) |
 
-### 1. Clone the repo
+### Setup
 
+**1. Clone**
 ```bash
 git clone https://github.com/yourusername/SecondBrain.git
 cd SecondBrain
 ```
 
-### 2. Backend setup
-
+**2. Backend**
 ```bash
 cd backend
 npm install
 ```
 
-Create `backend/.env`:
+Create `backend/.env` — add these keys, do not commit this file:
 
-```env
-MONGO_URI=your_mongodb_atlas_uri
-JWT_SECRET=your_strong_secret_key
-NODE_ENV=development
-JINA_API_KEY=your_jina_api_key
-SUPABASE_URL=your_supabase_project_url
-SUPABASE_ANON_KEY=your_supabase_anon_key
-GROQ_API_KEY=your_groq_api_key
-CLIENT_URL=http://localhost:5173
-```
+| Key | Where to get it |
+|-----|----------------|
+| `MONGO_URI` | MongoDB Atlas → Connect → Drivers |
+| `JWT_SECRET` | Any long random string |
+| `JINA_API_KEY` | jina.ai → API Keys |
+| `SUPABASE_URL` | Supabase → Settings → API |
+| `SUPABASE_ANON_KEY` | Supabase → Settings → API |
+| `GROQ_API_KEY` | console.groq.com → API Keys |
+| `CLIENT_URL` | `http://localhost:5173` for dev |
+| `NODE_ENV` | `development` for local |
 
 ```bash
 npm run dev
 ```
 
-### 3. Frontend setup
-
+**3. Frontend**
 ```bash
 cd frontend
 npm install
 ```
 
 Create `frontend/.env`:
-
-```env
+```
 VITE_API_URL=http://localhost:3000/api/v1
 ```
 
@@ -337,9 +379,9 @@ VITE_API_URL=http://localhost:3000/api/v1
 npm run dev
 ```
 
-### 4. MongoDB Atlas — Vector Search Index
+**4. MongoDB Atlas Vector Search Index**
 
-In Atlas → your cluster → **Atlas Search** → **Create Index** → **Atlas Vector Search** → JSON Editor:
+Atlas → your cluster → Atlas Search → Create Index → Atlas Vector Search → JSON Editor:
 
 ```json
 {
@@ -360,112 +402,96 @@ In Atlas → your cluster → **Atlas Search** → **Create Index** → **Atlas 
 
 Index name: `vector_index` | Database: `test` | Collection: `contents`
 
----
-
-## 🌐 Deployment
-
-| Service | Platform | URL |
-|---------|---------|-----|
-| Frontend | Vercel | `https://your-app.vercel.app` |
-| Backend | Render | `https://secondbrain-backend.onrender.com` |
-| Database | MongoDB Atlas | Cloud |
-| Storage | Supabase | Cloud |
-
-### Backend (Render)
-- Root Directory: `backend`
-- Build Command: `npm install --include=dev && npm run build`
-- Start Command: `node dist/server.js`
-
-### Frontend (Vercel)
-- Root Directory: `frontend`
-- Framework: `Vite`
-- Add env var: `VITE_API_URL=https://secondbrain-backend.onrender.com/api/v1`
+<br/>
 
 ---
 
-## 🔌 API Reference
+## Deployment
 
-| Method | Endpoint | Auth | Description |
-|--------|---------|------|-------------|
-| `POST` | `/api/v1/auth/signup` | ❌ | Register new user |
-| `POST` | `/api/v1/auth/signin` | ❌ | Login + set cookie |
-| `POST` | `/api/v1/auth/signout` | ✅ | Logout + clear cookie |
-| `POST` | `/api/v1/content/add` | ✅ | Add content (supports file upload) |
-| `GET` | `/api/v1/content/get` | ✅ | Get all user content |
-| `PUT` | `/api/v1/content/:id` | ✅ | Update content |
-| `DELETE` | `/api/v1/content/:id` | ✅ | Delete content + file |
-| `POST` | `/api/v1/content/reembed/:id` | ✅ | Re-index failed content |
-| `GET` | `/api/v1/search?query=` | ✅ | Semantic vector search |
-| `POST` | `/api/v1/chat` | ✅ | RAG chat with your brain |
-| `POST` | `/api/v1/brain/share` | ✅ | Generate share link |
-| `GET` | `/api/v1/brain/:hash` | ❌ | View shared brain |
+### Backend — Render
 
----
+| Setting | Value |
+|---------|-------|
+| Root Directory | `backend` |
+| Build Command | `npm install --include=dev && npm run build` |
+| Start Command | `node dist/server.js` |
+| Instance Type | Free |
 
-## 🧠 How Embeddings Work
+Add the same environment variables from `.env` in the Render dashboard under Environment tab. Set `NODE_ENV=production` and `CLIENT_URL=https://your-vercel-url.vercel.app`.
 
-Every time you save content, this happens in the background:
+### Frontend — Vercel
 
-```
-Content saved
-     │
-     ▼
-fetchContent() — based on type:
-  youtube  → fetch transcript via youtube-transcript
-  link     → scrape page text via cheerio
-  document → extract PDF text via pdf-parse
-  post     → use notes directly
-     │
-     ▼
-buildEmbedInput(title + notes + extractedText)
-     │
-     ▼
-Jina AI → 1024 dimensional vector
-     │
-     ▼
-Saved to MongoDB as embedding: [0.031, -0.142, ...]
-isEmbedded: true
-```
+| Setting | Value |
+|---------|-------|
+| Root Directory | `frontend` |
+| Framework | Vite |
+| Build Command | `npm run build` |
+| Output Directory | `dist` |
+| Env Variable | `VITE_API_URL=https://your-render-url.onrender.com/api/v1` |
 
-When you search or chat, your query goes through the same embedding process and MongoDB Atlas finds the most similar vectors using cosine similarity.
+<br/>
 
 ---
 
-## 🎨 Design System
+## Design System
 
-| Token | Value |
-|-------|-------|
-| Primary | `#7164c0` (purple) |
-| Primary Light | `#a78bfa` (purple-300) |
-| Text | `#1f2937` (gray-800) |
-| Muted | `#95989c` (gray-500) |
-| Background | `#f3f4f6` (gray-100) |
-| Border | `#e5e7eb` (gray-200) |
-| Font | System UI / Inter |
-| Border Radius | `0.75rem` (rounded-xl) |
+| Token | Tailwind Class | Hex Value | Usage |
+|-------|---------------|-----------|-------|
+| Primary | `purple-600` | `#7164c0` | Buttons, links, active states |
+| Primary Light | `purple-300` | `#a78bfa` | Tags, badges, secondary buttons |
+| Background | `gray-100` | `#f3f4f6` | Page background |
+| Surface | `white` | `#ffffff` | Cards, sidebar, topbar |
+| Border | `gray-200` | `#e5e7eb` | Card and input borders |
+| Text Primary | `gray-800` | `#1f2937` | Headings and body text |
+| Text Muted | `gray-400` | `#9ca3af` | Subtitles and placeholders |
+| Danger | `red-500` | `#ef4444` | Delete, error states |
+| Warning | `yellow-600` | `#ca8a04` | Not indexed badge |
+| Radius | `rounded-xl` | `0.75rem` | Cards and modals |
 
----
-
-## 🤝 Contributing
-
-1. Fork the repo
-2. Create a feature branch — `git checkout -b feat/amazing-feature`
-3. Commit your changes — `git commit -m "feat: add amazing feature"`
-4. Push to branch — `git push origin feat/amazing-feature`
-5. Open a Pull Request
+<br/>
 
 ---
 
-## 📄 License
+## Screenshots Guide
 
-MIT License — feel free to use this project for learning or building on top of it.
+To add screenshots to this README:
+
+| Step | Action |
+|------|--------|
+| 1 | Create `docs/images/` folder in repo root |
+| 2 | Take screenshots of dashboard, chat, modal, shared view |
+| 3 | Save as `dashboard.png`, `chat.png`, `modal.png`, `shared.png` |
+| 4 | Replace placeholder text in the Screenshots section above |
+| 5 | Use: `![Description](./docs/images/filename.png)` |
+
+<br/>
+
+---
+
+## Contributing
+
+| Step | Command |
+|------|---------|
+| Fork | Click Fork on GitHub |
+| Branch | `git checkout -b feat/your-feature` |
+| Commit | `git commit -m "feat: describe your change"` |
+| Push | `git push origin feat/your-feature` |
+| PR | Open a Pull Request on GitHub |
+
+<br/>
 
 ---
 
 <div align="center">
 
-Built with 💜 by **Ritesh Rana**
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=16&pause=1000&color=7164C0&center=true&vCenter=true&width=500&height=40&lines=Built+with+TypeScript+%2B+React+%2B+Node.js;Powered+by+Jina+AI+%2B+Groq+%2B+MongoDB+Atlas" alt="footer" />
 
-⭐ **Star this repo if you found it useful!**
+<br/><br/>
+
+Built by **Ritesh Rana**
+
+If this project helped you, consider giving it a star on GitHub.
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%"/>
 
 </div>
