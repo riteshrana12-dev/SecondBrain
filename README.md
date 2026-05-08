@@ -138,7 +138,7 @@ Second Brain is a full-stack AI-powered personal knowledge management system. It
 
 ```
 +----------------------------------------------------------+
-|                    USER BROWSER                           |
+|                    USER BROWSER                          |
 |               React + Vite  (Vercel)                     |
 +-----------------------------+----------------------------+
                               |
@@ -146,17 +146,17 @@ Second Brain is a full-stack AI-powered personal knowledge management system. It
                               |
                               v
 +----------------------------------------------------------+
-|                  EXPRESS REST API                         |
+|                  EXPRESS REST API                        |
 |                    (Render)                              |
 |                                                          |
 |   /auth    /content    /search    /chat    /brain        |
-+------+----------+----------+--------+-------------------+
++------+----------+----------+--------+--------------------+
        |          |          |        |
        v          v          v        v
 +----------+ +--------+ +-------+ +------------------+
-| MongoDB  | |Supabase| | Jina  | |   Groq LLaMA3   |
-|  Atlas   | |Storage | |  AI   | |   RAG Engine    |
-| Database | | Files  | | Embed | |  Chat Answers   |
+| MongoDB  | |Supabase| | Jina  | |   Groq LLaMA3    |
+|  Atlas   | |Storage | |  AI   | |   RAG Engine     |
+| Database | | Files  | | Embed | |  Chat Answers    |
 +----------+ +--------+ +-------+ +------------------+
 ```
 
@@ -271,17 +271,16 @@ SecondBrain/
 |   |   |
 |   |   +-- components/
 |   |   |   +-- ui/
-|   |   |       +-- Button.tsx
-|   |   |       +-- Card.tsx             All 5 content types + fileUrl
-|   |   |       +-- ChatPanel.tsx        RAG chat with sources display
-|   |   |       +-- ErrorBoundary.tsx    Class component error boundary
-|   |   |       +-- Input.tsx
-|   |   |       +-- Modal.tsx            Add and edit content form
-|   |   |       +-- SearchBar.tsx
-|   |   |       +-- Sidebar.tsx          Filter nav + signout
-|   |   |       +-- SidebarItems.tsx
-|   |   |       +-- SkeletonCard.tsx     Pulse loading skeleton
-|   |   |
+|   |   |   |   +-- Button.tsx
+|   |   |   |   +-- Card.tsx             All 5 content types + fileUrl  
+|   |   |   |   +-- Input.tsx
+|   |   |   |   +-- Modal.tsx            Add and edit content form
+|   |   |   |   +-- SearchBar.tsx
+|   |   |   |   +-- Sidebar.tsx          Filter nav + signout
+|   |   |   |   +-- SidebarItems.tsx
+|   |   |   |   +-- SkeletonCard.tsx     Pulse loading skeleton
+|   |   |   +-- ChatPanel.tsx        RAG chat with sources display
+|   |   |   +-- ErrorBoundary.tsx    Class component error boundary
 |   |   +-- hooks/
 |   |   |   +-- useAuth.ts               signIn, signUp, signOut
 |   |   |   +-- useContent.ts            fetch, add, delete, update, search
