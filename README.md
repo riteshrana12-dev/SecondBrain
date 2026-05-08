@@ -43,8 +43,7 @@
 <!-- 3. Replace the line below with your actual image -->
 <!-- ![Dashboard](./docs/images/dashboard.png) -->
 
-> **[Add your dashboard screenshot here]**
-> Recommended: 1280x720px — place at `docs/images/dashboard.png`
+> ![Dashboard](./assets/images/dashboard.png)
 
 </div>
 
