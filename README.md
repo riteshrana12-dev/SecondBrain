@@ -11,7 +11,7 @@
 <br/><br/>
 
 <!-- Badges -->
-<a href="https://your-app.vercel.app">
+<a href="https://second-brain-drab-two.vercel.app">
   <img src="https://img.shields.io/badge/Live_Demo-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" />
 </a>
 &nbsp;
