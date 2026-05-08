@@ -37,13 +37,7 @@
 
 ### Dashboard Preview
 
-<!-- ADD YOUR SCREENSHOT HERE -->
-<!-- 1. Create a docs/images/ folder in your repo -->
-<!-- 2. Take a screenshot of your dashboard -->
-<!-- 3. Replace the line below with your actual image -->
-<!-- ![Dashboard](./docs/images/dashboard.png) -->
-
-> ![Dashboard](./assets/images/dashboard.png)
+ ![Dashboard](./assets/images/dashboard.png)
 
 </div>
 
@@ -477,7 +471,7 @@ Add the same environment variables from `.env` in the Render dashboard under Env
 
 Built by **Ritesh Rana**
 
-If this project helped you, consider giving it a star on GitHub.
+If this project helped you, consider giving it a ⭐ on GitHub.
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%"/>
 
