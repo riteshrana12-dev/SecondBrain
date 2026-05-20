@@ -68,6 +68,7 @@ Second Brain is a full-stack AI-powered personal knowledge management system. It
 | **AI**      | Re-index         | Manually re-embed failed content                 |
 | **Sharing** | Share Brain      | Generate a public read-only link                 |
 | **Sharing** | Shared View      | Visitors can filter and search your brain        |
+| **Sharing** | Enable/Disable   | Author can enable and disable the share Link     |
 | **Auth**    | Cookie Auth      | HTTP-only JWT cookies, secure in production      |
 | **UX**      | Responsive       | Mobile, tablet, and desktop layouts              |
 | **UX**      | Skeleton Loading | Smooth loading states                            |
