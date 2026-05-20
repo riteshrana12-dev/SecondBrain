@@ -14,7 +14,7 @@ const share = async (req: Request, res: Response) => {
         return res.status(200).json({
           success: true,
           message: "Link already exists",
-          hash: existingLink.hash, // ← always a string
+          hash: existingLink.hash,
         });
       }
 
@@ -22,12 +22,13 @@ const share = async (req: Request, res: Response) => {
 
       return res.status(200).json({
         success: true,
-        hash: newLink.hash, // ← .hash not the whole document
+        hash: newLink.hash,
       });
     } else {
       await linkModel.deleteOne({ userId });
+      console.log("link deleted");
       return res.status(200).json({
-        success: true, // ← fixed typo: was "sucess"
+        success: true,
         message: "Link deleted",
       });
     }
@@ -56,7 +57,7 @@ const shareLink = async (req: Request, res: Response) => {
 
     const content = await contentModel
       .find({ userId: link.userId._id })
-      .populate("tags"); // ← populate tags here too
+      .populate("tags");
 
     return res.status(200).json({
       success: true,
