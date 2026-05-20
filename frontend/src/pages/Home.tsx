@@ -17,8 +17,8 @@ const Home = () => {
   const [editContent, setEditContent] = useState<Content | null>(null);
   const [loading, setLoading] = useState(true);
   const [shareLoading, setShareLoading] = useState(false);
-  const [shareLink, setShareLink] = useState<string | null>(null);
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [share, setShare] = useState(false);
 
   const fetchContent = async () => {
     try {
@@ -76,12 +76,17 @@ const Home = () => {
 
   const handleShare = async () => {
     setShareLoading(true);
+    const newShare = !share;
+    setShare(newShare);
     try {
-      const res = await api.post("/brain/share", { share: true });
-      const link = `${window.location.origin}/shared/${res.data.hash}`;
-      setShareLink(link);
-      await navigator.clipboard.writeText(link);
-      alert(`Share link copied!\n\n${link}`);
+      const res = await api.post("/brain/share", { share: newShare });
+      if (res.data.hash === undefined) {
+        alert("Link disabled");
+      } else {
+        const link = `${window.location.origin}/shared/${res.data.hash}`;
+        await navigator.clipboard.writeText(link);
+        alert(`Share link copied!\n\n${link}`);
+      }
     } catch (err) {
       console.error(err);
       alert("Failed to generate share link");
@@ -121,10 +126,12 @@ const Home = () => {
               <ShareIcon size="sm" />
               <span className="hidden sm:inline">
                 {shareLoading
-                  ? "Sharing..."
-                  : shareLink
+                  ? share
+                    ? "Sharing..."
+                    : "Disabling..."
+                  : share
                     ? "Shared"
-                    : "Share Brain"}
+                    : "Private"}
               </span>
             </button>
             <button
