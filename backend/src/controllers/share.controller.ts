@@ -11,10 +11,12 @@ const share = async (req: Request, res: Response) => {
     if (share) {
       const existingLink = await linkModel.findOne({ userId });
       if (existingLink) {
+        console.log("link already exist");
         return res.status(200).json({
           success: true,
           message: "Link already exists",
           hash: existingLink.hash,
+          share: true,
         });
       }
 
@@ -23,6 +25,7 @@ const share = async (req: Request, res: Response) => {
       return res.status(200).json({
         success: true,
         hash: newLink.hash,
+        share: true,
       });
     } else {
       await linkModel.deleteOne({ userId });
@@ -30,8 +33,24 @@ const share = async (req: Request, res: Response) => {
       return res.status(200).json({
         success: true,
         message: "Link deleted",
+        share: false,
       });
     }
+  } catch (error: any) {
+    return res.status(500).json({
+      message: "Server error",
+      error: error.message,
+    });
+  }
+};
+
+const getShareStatus = async (req: Request, res: Response) => {
+  try {
+    const link = await linkModel.findOne({ userId: req.user_id });
+    if (link) {
+      return res.status(200).json({ share: true, hash: link.hash });
+    }
+    return res.status(400).json({ share: false });
   } catch (error: any) {
     return res.status(500).json({
       message: "Server error",
@@ -72,4 +91,4 @@ const shareLink = async (req: Request, res: Response) => {
   }
 };
 
-export default { share, shareLink };
+export default { share, getShareStatus, shareLink };
