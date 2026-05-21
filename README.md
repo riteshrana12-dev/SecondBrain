@@ -35,9 +35,11 @@
 <!-- SCREENSHOT SECTION -->
 <div align="center">
 
-### Dashboard Preview
+### Preview
 
- ![Dashboard](./assets/images/dashboard.png)
+![Private_View](./assets/images/privateView.png)
+
+![Public_View](./assets/images/publicView.png)
 
 </div>
 
@@ -266,7 +268,7 @@ SecondBrain/
 |   |   +-- components/
 |   |   |   +-- ui/
 |   |   |   |   +-- Button.tsx
-|   |   |   |   +-- Card.tsx             All 5 content types + fileUrl  
+|   |   |   |   +-- Card.tsx             All 5 content types + fileUrl
 |   |   |   |   +-- Input.tsx
 |   |   |   |   +-- Modal.tsx            Add and edit content form
 |   |   |   |   +-- SearchBar.tsx
@@ -441,7 +443,6 @@ Add the same environment variables from `.env` in the Render dashboard under Env
 <br/>
 
 ---
-
 
 ## Contributing
 
