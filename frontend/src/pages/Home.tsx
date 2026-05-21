@@ -31,9 +31,18 @@ const Home = () => {
     }
   };
 
+  const fetchShareStatus = async () => {
+    try {
+      const res = await api.get("/brain/share");
+      setShare(res.data.share);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
     (async () => {
-      await fetchContent();
+      await Promise.all([fetchShareStatus(), fetchContent()]);
     })();
   }, []);
 
@@ -76,20 +85,36 @@ const Home = () => {
 
   const handleShare = async () => {
     setShareLoading(true);
-    const newShare = !share;
-    setShare(newShare);
+    setShare(true);
     try {
-      const res = await api.post("/brain/share", { share: newShare });
-      if (res.data.hash === undefined) {
-        alert("Link disabled");
+      const res = await api.post("/brain/share", { share: true });
+      const link = `${window.location.origin}/shared/${res.data.hash}`;
+      await navigator.clipboard.writeText(link);
+      if (res.data.message) {
+        alert(`Link already shared\nShare link copied!\n\n${link}`);
       } else {
-        const link = `${window.location.origin}/shared/${res.data.hash}`;
-        await navigator.clipboard.writeText(link);
         alert(`Share link copied!\n\n${link}`);
       }
     } catch (err) {
       console.error(err);
       alert("Failed to generate share link");
+    } finally {
+      setShareLoading(false);
+    }
+  };
+
+  const disableShare = async () => {
+    setShareLoading(true);
+
+    try {
+      const res = await api.post("/brain/share", { share: false });
+      if (res.data.hash === undefined) {
+        alert("Link disabled");
+        setShare(false);
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Failed to disable the share link");
     } finally {
       setShareLoading(false);
     }
@@ -125,15 +150,22 @@ const Home = () => {
             >
               <ShareIcon size="sm" />
               <span className="hidden sm:inline">
-                {shareLoading
-                  ? share
-                    ? "Sharing..."
-                    : "Disabling..."
-                  : share
-                    ? "Shared"
-                    : "Private"}
+                {share ? "Shared" : "Private"}
               </span>
             </button>
+            {share && (
+              <button
+                onClick={disableShare}
+                disabled={shareLoading}
+                className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-semibold rounded-md bg-purple-300 text-purple-600 hover:bg-purple-400 transition-colors disabled:opacity-50"
+              >
+                <i className="fa-solid fa-ban"></i>
+                <span className="hidden sm:inline">
+                  {share && "Link Disabled"}
+                </span>
+              </button>
+            )}
+
             <button
               onClick={() => {
                 setEditContent(null);
