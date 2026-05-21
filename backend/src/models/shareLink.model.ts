@@ -5,10 +5,13 @@ interface Ilink extends Document {
   userId: Types.ObjectId;
 }
 
-const linkSchema = new Schema<Ilink>({
-  hash: { type: String, required: true },
-  userId: { type: Types.ObjectId, ref: "user", required: true, unique: true },
-});
+const linkSchema = new Schema<Ilink>(
+  {
+    hash: { type: String, required: true },
+    userId: { type: Types.ObjectId, ref: "user", required: true, unique: true },
+  },
+  { timestamps: true },
+);
 
 const linkModel = model<Ilink>("link", linkSchema);
 export default linkModel;
