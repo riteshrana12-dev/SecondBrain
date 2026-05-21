@@ -35,8 +35,6 @@
 <!-- SCREENSHOT SECTION -->
 <div align="center">
 
-### Preview
-
 ### Author View
 ![Private_View](./assets/images/privateView.png)
 
