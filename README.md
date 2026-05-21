@@ -37,8 +37,10 @@
 
 ### Preview
 
+### Author View
 ![Private_View](./assets/images/privateView.png)
 
+### Public View
 ![Public_View](./assets/images/publicView.png)
 
 </div>
