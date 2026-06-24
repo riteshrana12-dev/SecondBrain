@@ -326,7 +326,7 @@ SecondBrain/
 **1. Clone**
 
 ```bash
-git clone https://github.com/yourusername/SecondBrain.git
+git clone https://github.com/riteshrana12-dev/SecondBrain.git
 cd SecondBrain
 ```
 
